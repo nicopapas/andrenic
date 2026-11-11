@@ -1,0 +1,174 @@
+/* Andrenic - hoja de estilos (enfoque mobile first) */
+
+:root {
+  --azul: #2b4fa0;
+  --azul-claro: #29abe2;
+  --fondo: #f4f9fc;
+  --blanco: #ffffff;
+  --texto: #1a2535;
+  --gris: #5a6e80;
+  --borde: #daeaf5;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.6;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--azul); }
+ul { list-style: none; }
+
+.contenedor { width: 100%; max-width: 70rem; margin: 0 auto; padding: 0 1rem; }
+
+.salto {
+  position: absolute; left: -999px; top: 0;
+  background: var(--azul); color: var(--blanco); padding: .5rem 1rem;
+}
+.salto:focus { left: 0; z-index: 20; }
+
+/* Encabezado y menu (movil: menu desplegable) */
+.encabezado {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--blanco); border-bottom: 1px solid var(--borde);
+}
+.encabezado-interno {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; padding-top: .5rem; padding-bottom: .5rem;
+}
+.marca {
+  display: flex; align-items: center; gap: .6rem;
+  text-decoration: none; color: var(--azul); font-weight: bold; font-size: 1.3rem;
+}
+.marca img { width: 2.75rem; height: 2.75rem; }
+
+.boton-menu {
+  background: var(--azul); color: var(--blanco); border: 0;
+  border-radius: .5rem; padding: .6rem 1rem; font-size: 1rem; cursor: pointer;
+}
+
+.menu { display: none; width: 100%; }
+.menu.abierto { display: block; }
+.menu a {
+  display: block; padding: .75rem 0; text-decoration: none;
+  color: var(--texto); font-weight: bold; border-top: 1px solid var(--borde);
+}
+.menu a:hover, .menu a:focus { color: var(--azul); }
+
+/* Hero */
+.hero { background: var(--azul); color: var(--blanco); padding: 2.5rem 0 0; }
+.hero-interno { display: grid; gap: 1.5rem; align-items: end; }
+.hero-texto { padding-bottom: 1.5rem; }
+.hero h1 { font-size: clamp(1.8rem, 6vw, 3rem); line-height: 1.15; margin-bottom: 1rem; }
+.hero p { margin-bottom: 1.5rem; max-width: 32rem; }
+.hero-imagen { text-align: center; }
+.hero-imagen img { width: 70%; max-width: 20rem; margin: 0 auto; }
+.hero-imagen figcaption { font-size: .85rem; padding: .5rem 0; }
+
+.boton {
+  display: inline-block; background: var(--azul-claro); color: var(--texto);
+  border: 0; border-radius: 2rem; padding: .75rem 1.5rem;
+  font-size: 1rem; font-weight: bold; text-decoration: none; cursor: pointer;
+}
+.boton:hover, .boton:focus { background: var(--blanco); outline: 2px solid var(--azul); }
+
+/* Secciones */
+.seccion { padding: 2.5rem 0; }
+.seccion-blanca { background: var(--blanco); }
+h2 { color: var(--azul); font-size: 1.6rem; margin-bottom: .5rem; }
+.subtitulo { color: var(--gris); margin-bottom: 1.5rem; }
+.texto-centrado { text-align: center; max-width: 46rem; }
+.texto-centrado p { margin-bottom: 1rem; }
+
+.valores { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; margin-top: 1.5rem; }
+.valores li {
+  background: var(--blanco); border: 1px solid var(--borde);
+  border-radius: 2rem; padding: .35rem 1rem; font-weight: bold; color: var(--azul);
+}
+
+/* Tarjetas de productos */
+.rejilla-tarjetas { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+.tarjeta {
+  background: var(--fondo); border: 1px solid var(--borde);
+  border-radius: .75rem; overflow: hidden;
+}
+.tarjeta img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.tarjeta-cuerpo { padding: 1rem; }
+.etiqueta { font-size: .8rem; color: var(--gris); text-transform: uppercase; }
+.tarjeta h3 { color: var(--azul); margin: .25rem 0 .5rem; }
+.tarjeta li { margin-left: 1.1rem; list-style: disc; }
+
+/* Calzado y pestanas */
+.pestanas { display: flex; gap: .5rem; margin-bottom: 1.25rem; }
+.pestana {
+  flex: 1; padding: .7rem 1rem; border: 2px solid var(--azul);
+  background: var(--blanco); color: var(--azul);
+  border-radius: .5rem; font-size: 1rem; font-weight: bold; cursor: pointer;
+}
+.pestana[aria-selected="true"] { background: var(--azul); color: var(--blanco); }
+.panel[hidden] { display: none; }
+
+.rejilla-zapatos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.zapato {
+  background: var(--blanco); border: 1px solid var(--borde);
+  border-radius: .75rem; padding: .75rem; text-align: center;
+}
+.zapato img { margin: 0 auto; }
+.zapato figcaption { font-weight: bold; color: var(--azul); margin-top: .5rem; }
+
+/* Contacto y formulario */
+.contacto { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+.contacto-datos p { margin-bottom: .5rem; }
+.campo { margin-bottom: 1rem; }
+label { display: block; font-weight: bold; margin-bottom: .25rem; }
+input, select, textarea {
+  width: 100%; padding: .65rem; font: inherit;
+  border: 1px solid var(--gris); border-radius: .4rem; background: var(--blanco);
+}
+input:focus, select:focus, textarea:focus, .boton-menu:focus, .pestana:focus {
+  outline: 3px solid var(--azul-claro); outline-offset: 2px;
+}
+.invalido { border-color: #b00020; }
+.estado { margin-top: .75rem; font-weight: bold; }
+
+/* Informacion y pie */
+.rejilla-info { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1rem; }
+.info { background: var(--blanco); border: 1px solid var(--borde); border-radius: .75rem; padding: 1rem; }
+.info h3 { color: var(--azul); margin-bottom: .25rem; }
+
+.pie { background: var(--azul); color: var(--blanco); padding: 1.5rem 0; font-size: .9rem; }
+.pie p { margin-bottom: .4rem; }
+.pie a { color: var(--blanco); margin-right: 1rem; }
+
+/* Tableta: 768px en adelante */
+@media (min-width: 768px) {
+  .boton-menu { display: none; }
+  .menu { display: block; width: auto; }
+  .menu ul { display: flex; gap: 1.5rem; }
+  .menu a { border-top: 0; padding: .5rem 0; }
+
+  .hero { padding-top: 3rem; }
+  .hero-interno { grid-template-columns: 1.2fr 1fr; }
+
+  .rejilla-tarjetas { grid-template-columns: repeat(2, 1fr); }
+  .rejilla-zapatos { grid-template-columns: repeat(3, 1fr); }
+  .contacto { grid-template-columns: 1fr 1.4fr; }
+  .rejilla-info { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Computador: 1024px en adelante */
+@media (min-width: 1024px) {
+  .rejilla-tarjetas { grid-template-columns: repeat(3, 1fr); }
+  .rejilla-zapatos { grid-template-columns: repeat(4, 1fr); }
+  h2 { font-size: 2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
